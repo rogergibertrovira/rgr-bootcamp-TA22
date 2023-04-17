@@ -5,20 +5,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import models.ModeloVideo;
 import views.VistaConsultaVideo;
 
 public class ControladorConsultaVideo implements ActionListener {
 
-	private ModeloVideo modelo;
 	private VistaConsultaVideo vista;
 	private ControladorMostrarVideo controladorMostrar;
 
 	// Atributos de video necesarios
 	private int id;
 
-	public ControladorConsultaVideo(ModeloVideo mod, VistaConsultaVideo vis, ControladorMostrarVideo contMostrar) {
-		this.modelo = mod;
+	public ControladorConsultaVideo(VistaConsultaVideo vis, ControladorMostrarVideo contMostrar) {
 		this.vista = vis;
 		this.vista.buttonConsultar.addActionListener(this);
 		this.controladorMostrar = contMostrar;
@@ -37,7 +34,6 @@ public class ControladorConsultaVideo implements ActionListener {
 			if (!"".equals(vista.tfId.getText())) {
 				try {
 					id = Integer.parseInt(vista.tfId.getText());
-					modelo.getId();
 					// Comprueba el formato del id
 					if (id >= 0) {
 						controladorMostrar.iniciarVista(id);

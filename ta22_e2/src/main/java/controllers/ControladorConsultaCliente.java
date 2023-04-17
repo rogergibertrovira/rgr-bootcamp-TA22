@@ -5,20 +5,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import models.ModeloCliente;
 import views.VistaConsultaCliente;
 
 public class ControladorConsultaCliente implements ActionListener {
 
-	private ModeloCliente modelo;
-	private VistaConsultaCliente vista;
+		private VistaConsultaCliente vista;
 	private ControladorMostrarCliente controladorMostrar;
 
 	// Atributos de cliente necesarios
 	private int id;
 
-	public ControladorConsultaCliente(ModeloCliente mod, VistaConsultaCliente vis, ControladorMostrarCliente contMostrar) {
-		this.modelo = mod;
+	public ControladorConsultaCliente(VistaConsultaCliente vis, ControladorMostrarCliente contMostrar) {
 		this.vista = vis;
 		this.vista.buttonConsultar.addActionListener(this);
 		this.controladorMostrar = contMostrar;
@@ -37,7 +34,6 @@ public class ControladorConsultaCliente implements ActionListener {
 			if (!"".equals(vista.tfId.getText())) {
 				try {
 					id = Integer.parseInt(vista.tfId.getText());
-					modelo.getId();
 					// Comprueba el formato del id
 					if (id >= 0) {
 						controladorMostrar.iniciarVista(id);

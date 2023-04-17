@@ -48,6 +48,7 @@ public class ControladorInsercion implements ActionListener {
 					// Comprueba el formato del dni (8 digitos)
 					if ((int) (Math.log10(dni) + 1) == 8) {
 						modelo.inserirCliente(nombre, apellido, direccion, dni, fechaLocalDate);
+						limpiarTextFields();
 						vista.dispose();
 					} else {
 						throw new NumberFormatException("Numero negativo");
@@ -60,5 +61,13 @@ public class ControladorInsercion implements ActionListener {
 				}
 			}
 		}
+	}
+
+	public void limpiarTextFields() {
+		vista.tfNombre.setText("");
+		vista.tfApellido.setText("");
+		vista.tfDireccion.setText("");
+		vista.tfDni.setText("");
+		vista.tfFecha.setText("");
 	}
 }

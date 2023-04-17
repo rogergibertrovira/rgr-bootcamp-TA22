@@ -36,7 +36,7 @@ public class mainApp {
 		// Controladores
 		ControladorExiste controladorExiste = new ControladorExiste(vistaExiste);
 		ControladorMostrar controladorMostrar = new ControladorMostrar(modeloCliente, vistaMostrar, controladorExiste);
-		ControladorConsulta controladorConsulta = new ControladorConsulta(modeloCliente, vistaConsulta, controladorMostrar);
+		ControladorConsulta controladorConsulta = new ControladorConsulta(vistaConsulta, controladorMostrar);
 		ControladorInsercion controladorInsercion = new ControladorInsercion(modeloCliente, vistaInsercion);
 		ControladorActualizar controladorActualizar = new ControladorActualizar(modeloCliente, vistaActualizar, controladorExiste);
 		ControladorBorrar controladorBorrar = new ControladorBorrar(modeloCliente, vistaBorrar, controladorExiste);

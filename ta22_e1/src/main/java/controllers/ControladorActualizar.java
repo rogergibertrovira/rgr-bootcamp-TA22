@@ -59,6 +59,7 @@ public class ControladorActualizar implements ActionListener {
 						if ((int) (Math.log10(dni) + 1) == 8) {
 							boolean clienteExiste = modelo.actualizarCliente(id, nombre, apellido, direccion, dni,
 									fechaLocalDate);
+							limpiarTextFields();
 							vista.dispose();
 							if(!clienteExiste) {
 								controladorExiste.iniciarVista();
@@ -74,5 +75,14 @@ public class ControladorActualizar implements ActionListener {
 				}
 			}
 		}
+	}
+	
+	public void limpiarTextFields() {
+		vista.tfId.setText("");
+		vista.tfNombre.setText("");
+		vista.tfApellido.setText("");
+		vista.tfDireccion.setText("");
+		vista.tfDni.setText("");
+		vista.tfFecha.setText("");
 	}
 }

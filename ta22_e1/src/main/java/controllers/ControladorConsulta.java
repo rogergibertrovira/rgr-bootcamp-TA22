@@ -5,20 +5,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import models.ModeloCliente;
 import views.VistaConsulta;
 
 public class ControladorConsulta implements ActionListener {
 
-	private ModeloCliente modelo;
 	private VistaConsulta vista;
 	private ControladorMostrar controladorMostrar;
 
 	// Atributos de cliente necesarios
 	private int id;
 
-	public ControladorConsulta(ModeloCliente mod, VistaConsulta vis, ControladorMostrar contMostrar) {
-		this.modelo = mod;
+	public ControladorConsulta(VistaConsulta vis, ControladorMostrar contMostrar) {
 		this.vista = vis;
 		this.vista.buttonConsultar.addActionListener(this);
 		this.controladorMostrar = contMostrar;
@@ -37,10 +34,10 @@ public class ControladorConsulta implements ActionListener {
 			if (!"".equals(vista.tfId.getText())) {
 				try {
 					id = Integer.parseInt(vista.tfId.getText());
-					modelo.getId();
 					// Comprueba el formato del id
 					if (id >= 0) {
 						controladorMostrar.iniciarVista(id);
+						limpiarTextFields();
 						vista.dispose();
 					} else {
 						throw new NumberFormatException("Numero negativo");
@@ -50,5 +47,9 @@ public class ControladorConsulta implements ActionListener {
 				}
 			}
 		}
+	}
+	
+	public void limpiarTextFields() {
+		vista.tfId.setText("");
 	}
 }

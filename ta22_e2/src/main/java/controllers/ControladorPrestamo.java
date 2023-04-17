@@ -3,8 +3,10 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import models.Cliente;
 import models.ModeloCliente;
 import models.ModeloVideo;
+import models.Video;
 import views.VistaPrestamo;
 
 public class ControladorPrestamo implements ActionListener {
@@ -15,10 +17,11 @@ public class ControladorPrestamo implements ActionListener {
 	private VistaPrestamo vista;
 
 	private ControladorExiste controladorExiste;
-	
+
 	private int idCliente, idVideo;
 
-	public ControladorPrestamo(ModeloCliente mCliente, ModeloVideo mVideo, VistaPrestamo vis, ControladorExiste contExiste) {
+	public ControladorPrestamo(ModeloCliente mCliente, ModeloVideo mVideo, VistaPrestamo vis,
+			ControladorExiste contExiste) {
 		this.modeloCliente = mCliente;
 		this.modeloVideo = mVideo;
 		this.vista = vis;
@@ -41,23 +44,23 @@ public class ControladorPrestamo implements ActionListener {
 					idVideo = Integer.parseInt(vista.tfVideo.getText());
 					// Comprueba los formatos de los ids
 					if (idCliente >= 0 && idVideo >= 0) {
-						
+
 						// Comprueba si existe el video y el cliente
-						boolean existeVideo = modeloVideo.consultarVideo(idVideo);
-						boolean existeCliente = modeloCliente.consultarCliente(idCliente);
-						
+						Video video = modeloVideo.consultarVideo(idVideo);
+						Cliente cliente = modeloCliente.consultarCliente(idCliente);
+
 						// Si existe el video y el cliente
-						if(existeVideo && existeCliente) {
+						if (video.getId() > 0 && cliente.getId() > 0) {
 							modeloVideo.prestarVideo(idCliente, idVideo);
 							limpiarTextFields();
-							vista.dispose();	
+							vista.dispose();
 						}
 						// Si no existe el video
-						else if(!existeVideo) {
+						else if (video.getId() <= 0) {
 							controladorExiste.iniciarVista(2);
 						}
 						// Si no existe el cliente
-						else if(!existeCliente) {
+						else if (cliente.getId() <= 0) {
 							controladorExiste.iniciarVista(1);
 						}
 					} else {

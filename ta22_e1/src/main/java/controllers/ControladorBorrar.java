@@ -40,6 +40,7 @@ public class ControladorBorrar implements ActionListener {
 					// Comprueba el formato del id
 					if (id >= 0) {
 						boolean existe = modelo.borrarCliente(id);
+						limpiarTextFields();
 						vista.dispose();
 						if (!existe) {
 							controladorExiste.iniciarVista();
@@ -52,5 +53,9 @@ public class ControladorBorrar implements ActionListener {
 				}
 			}
 		}
+	}
+	
+	public void limpiarTextFields() {
+		vista.tfId.setText("");
 	}
 }

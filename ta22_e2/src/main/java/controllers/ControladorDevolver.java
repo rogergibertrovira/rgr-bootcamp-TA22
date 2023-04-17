@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import models.ModeloVideo;
+import models.Video;
 import views.VistaDevolver;
 
 public class ControladorDevolver implements ActionListener {
@@ -39,16 +40,16 @@ public class ControladorDevolver implements ActionListener {
 					if (idCliente >= 0 && idVideo >= 0) {
 
 						// Comprueba si existe el video
-						boolean existeVideo = modelo.consultarVideo(idVideo);
+						Video video = modelo.consultarVideo(idVideo);
 
 						// Si existe el video
-						if (existeVideo) {
+						if (video.getId() > 0) {
 							modelo.devolverVideo(idVideo);
 							limpiarTextFields();
 							vista.dispose();
 						}
 						// Si no existe el video
-						else if (!existeVideo) {
+						else {
 							controladorExiste.iniciarVista(2);
 						}
 					} else {

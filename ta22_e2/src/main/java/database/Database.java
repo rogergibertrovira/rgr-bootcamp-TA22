@@ -63,7 +63,7 @@ public class Database {
 	}
 
 	// -----------------------------------------------------------------
-	public void insertData(String db, String table, String atributos, Connection conexion) {
+	public void insertData(String db, String table, String columns, String atributos, Connection conexion) {
 		try {
 			// USE database
 			String queryDB = "USE " + db + ";";
@@ -71,13 +71,12 @@ public class Database {
 			stdb.executeUpdate(queryDB);
 
 			Statement st = conexion.createStatement();
-			st.executeUpdate("INSERT INTO " + table + " VALUE(" + atributos + ");");
+			st.executeUpdate("INSERT INTO " + table + "(" + columns + ") VALUE(" + atributos + ");");
 			System.out.println("data insertada: " + atributos);
 
 		} catch (SQLException e) {
 			System.out.println("Error insertando data: " + e);
 		}
-
 	}
 
 	// -----------------------------------------------------------------

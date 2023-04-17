@@ -81,7 +81,7 @@ public class mainApp {
 		// Controladores Cliente
 		ControladorMostrarCliente controladorMostrarC = new ControladorMostrarCliente(modeloCliente, vistaMostrarC,
 				controladorExiste);
-		ControladorConsultaCliente controladorConsultaC = new ControladorConsultaCliente(modeloCliente, vistaConsultaC,
+		ControladorConsultaCliente controladorConsultaC = new ControladorConsultaCliente(vistaConsultaC,
 				controladorMostrarC);
 		ControladorInsercionCliente controladorInsercionC = new ControladorInsercionCliente(modeloCliente,
 				vistaInsercionC);
@@ -93,7 +93,7 @@ public class mainApp {
 		// Controladores Video
 		ControladorMostrarVideo controladorMostrarV = new ControladorMostrarVideo(modeloVideo, vistaMostrarV,
 				controladorExiste);
-		ControladorConsultaVideo controladorConsultaV = new ControladorConsultaVideo(modeloVideo, vistaConsultaV,
+		ControladorConsultaVideo controladorConsultaV = new ControladorConsultaVideo(vistaConsultaV,
 				controladorMostrarV);
 		ControladorInsercionVideo controladorInsercionV = new ControladorInsercionVideo(modeloVideo, vistaInsercionV);
 		ControladorActualizarVideo controladorActualizarV = new ControladorActualizarVideo(modeloVideo,
@@ -108,7 +108,8 @@ public class mainApp {
 		// Controlador opciones
 		ControladorOpciones controladorOpciones = new ControladorOpciones(vistaOpciones, controladorConsultaC,
 				controladorInsercionC, controladorActualizarC, controladorBorrarC, controladorConsultaV,
-				controladorInsercionV, controladorActualizarV, controladorBorrarV, controladorPrestamo, controladorDevolver);
+				controladorInsercionV, controladorActualizarV, controladorBorrarV, controladorPrestamo,
+				controladorDevolver);
 
 		// Inicia la vista inicial opciones
 		controladorOpciones.iniciarVista();
