@@ -15,7 +15,7 @@ CREATE TABLE videos (
 	title varchar(250) DEFAULT NULL,
 	director varchar(250) DEFAULT NULL,
 	cli_id int DEFAULT NULL,
-	CONSTRAINT videos_fk FOREIGN KEY (cli_id) REFERENCES clientes(id)
+	FOREIGN KEY (cli_id) REFERENCES clientes(id)
 );
 
 INSERT INTO clientes (nombre, apellido, direccion, dni, fecha) VALUES 
@@ -37,3 +37,5 @@ SELECT * FROM clientes;
 SELECT * FROM videos;
 
 DELETE From videos where id >0;
+
+DROP TABLE videos;
