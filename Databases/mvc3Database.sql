@@ -13,10 +13,11 @@ CREATE TABLE cientificos (
 );
 	
 CREATE TABLE asignadoA (
+	id varchar(4) NOT NULL PRIMARY KEY,
 	proyecto varchar(4) DEFAULT NULL,
 	cientifico varchar(8) DEFAULT NULL,
-	FOREIGN KEY (proyecto) REFERENCES proyectos(id),
-	FOREIGN KEY (cientifico) REFERENCES cientificos(dni)
+	FOREIGN KEY (proyecto) REFERENCES proyectos (id) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (cientifico) REFERENCES cientificos (dni) ON UPDATE CASCADE ON DELETE CASCADE
 );
 	
 
@@ -34,6 +35,9 @@ INSERT INTO cientificos (dni, nomApels) VALUES
 	('12674893', 'Fausto El Portugues'),
 	('45637829', 'Hubert Farnsworth');
     
-    select * from proyectos;
-    
-    select * from cientificos;
+INSERT INTO asignadoA (id, proyecto, cientifico) VALUES
+	('a1', 'a23r', '84738291'),
+	('a2', 'b112', '33275849'),
+	('a3', 'y67j', '45637829'),
+	('a4', 'fr33', '99826474'),
+	('a5', 'ip00', '12674893');
